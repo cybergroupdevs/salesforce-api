@@ -13,20 +13,12 @@ const createCase = async (req, res) => {
 const getCase = async (req, res) => {
   try {
     const id = req.params.id;
-    const Case = await Case.find({
-      CaseNumber: id
-    }).populate("product");
+    const CaseData = await Case.findOne({ CaseNumber: id });
 
-    if (Case[0].isDeleted) {
-      const deletedAtDate = new Date(Case[0].deletedAt),
-        message = `Case Deleted by you on ${deletedAtDate}!`;
-
-      sendResponse(res, true, message, Case);
-    }
-
-    sendResponse(res, true, "Case Fetched Successfully!", Case);
+    sendResponse(res, true, "Case Fetched Successfully!", CaseData);
   } catch (err) {
-    sendResponse(res, false, "Case Fetch Unsuccessful!", err);
+    console.log(err)
+    sendResponse(res, false, "Case Fetch Unsuccessful!", err, 404);
   }
 };
 
@@ -44,17 +36,17 @@ const getCases = async (req, res) => {
 const updateCase = async (req, res) => {
   try {
     const id = req.params.id,
-      updateCaseData = req.body;
-
-    const result = await Case.updateOne(
-      { CaseNumber: id },
-      { $set: updateCaseData },
-      { new: true }
-    );
-
-    sendResponse(res, true, "Case Updated Successfully!", result);
+    updateCaseData = req.body;
+    await Case.update(updateCaseData, {
+      where: {
+        casenumber: id
+      }
+    })
+    const data = await Case.findOne({ CaseNumber: id });
+    sendResponse(res, true, "Case Updated Successfully!", data);
   } catch (err) {
-    sendResponse(res, false, "Case Update Unsuccessful!", err);
+    console.log(err)
+    sendResponse(res, false, "Case Update Unsuccessful!", err, 406);
   }
 };
 
@@ -79,8 +71,8 @@ const deleteCase = async (req, res) => {
   }
 };
 
-const sendResponse = async (res, status, message, resultOrErr) => {
-  res.send({
+const sendResponse = async (res, status, message, resultOrErr, code=200) => {
+  res.status(code).send({
     status: status,
     message: message,
     data: resultOrErr

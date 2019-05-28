@@ -14,6 +14,10 @@ const fastify = require("fastify")({
   logger: LOGGER
 });
 
+fastify.register(require('fastify-cors'), { 
+  origin: '*'
+})
+
 fastify.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "OPTIONS, GET, PUT, POST, DELETE");

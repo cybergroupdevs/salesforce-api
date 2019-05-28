@@ -1,4 +1,4 @@
-const { createCase, getCase, getCases, updateCase, deleteCase } = require("./Cases");
+const { createCase, getCase, getCases, updateCase, deleteCase } = require("./cases");
 
 module.exports = {
   createCase,

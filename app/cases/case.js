@@ -12,6 +12,10 @@ const Case = sequelize.define('case', {
     type: Sequelize.STRING,
     required: true
   },
+  externalid__c: {
+    type: Sequelize.STRING,
+    unique: true
+  },
   origin: {
     type: Sequelize.STRING,
     required: true
@@ -25,10 +29,10 @@ const Case = sequelize.define('case', {
   subject: {
       type: Sequelize.STRING
   },
-  // id: {
-  //   type: Sequelize.INTEGER,
-  //   primaryKey: true
-  // },
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true
+  },
   status: {
     type: Sequelize.STRING,
     primaryKey: true

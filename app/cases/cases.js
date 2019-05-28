@@ -3,11 +3,7 @@ const { Case } = require("./case");
 const createCase = async (req, res) => {
   try {
     const CaseData = req.body;
-    const Case = new Case(CaseData);
-    Case.productId = CaseData.productId;
-
-    const result = await Case.create(Case);
-
+    const result = await Case.create(CaseData);
     sendResponse(res, true, "Case Created Successfully!", result);
   } catch (err) {
     sendResponse(res, false, "Case Create Unsuccessful!", err);

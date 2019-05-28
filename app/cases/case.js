@@ -2,8 +2,19 @@ const Sequelize = require("sequelize");
 const { sequelize } = require("../../db/db");
 
 const Case = sequelize.define('case', {
+  accountid: {
+    type: Sequelize.STRING
+  },
   casenumber: {
     type: Sequelize.STRING
+  },
+  status: {
+    type: Sequelize.STRING,
+    required: true
+  },
+  origin: {
+    type: Sequelize.STRING,
+    required: true
   },
   closeddate: {
     type: Sequelize.DATE
@@ -14,10 +25,10 @@ const Case = sequelize.define('case', {
   subject: {
       type: Sequelize.STRING
   },
-  id: {
-    type: Sequelize.INTEGER,
-    primaryKey: true
-  },
+  // id: {
+  //   type: Sequelize.INTEGER,
+  //   primaryKey: true
+  // },
   status: {
     type: Sequelize.STRING,
     primaryKey: true

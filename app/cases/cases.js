@@ -1,4 +1,4 @@
-const { Case } = require("./Case");
+const { Case } = require("./case");
 
 const createCase = async (req, res) => {
   try {

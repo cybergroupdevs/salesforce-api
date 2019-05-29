@@ -39,11 +39,12 @@ const updateCase = async (req, res) => {
     const casenumber = req.params.casenumber,
     updateCaseData = req.body;
 
-    const result = await Case.update(
-      updateCaseData,
-      {returning: true, where: {casenumber: casenumber} }
+    await Case.update(
+    updateCaseData,
+      { returning: true, where: { casenumber: casenumber } }
     );
-    sendResponse(res, true, "Case Updated Successfully!", result);
+    const CaseData = await Case.findOne({ CaseNumber: casenumber });
+    sendResponse(res, true, "Case Updated Successfully!", CaseData);
   } catch (err) {
     console.log(err)
     sendResponse(res, false, "Case Update Unsuccessful!", err, 406);

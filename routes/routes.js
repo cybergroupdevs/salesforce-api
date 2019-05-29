@@ -18,7 +18,7 @@ const casesApiRoutes = [
   },
   {
     method: 'PUT',
-    url: '/api/case/:id',
+    url: '/api/case/:casenumber',
     handler: cases.updateCase
   },
   {

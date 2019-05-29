@@ -43,15 +43,13 @@ const getCases = async (req, res) => {
 
 const updateCase = async (req, res) => {
   try {
-    const id = req.params.id,
-      updateCaseData = req.body;
+    const casenumber = req.params.casenumber,
+    updateCaseData = req.body;
 
-    const result = await Case.updateOne(
-      { CaseNumber: id },
-      { $set: updateCaseData },
-      { new: true }
+    const result = await Case.update(
+      updateCaseData,
+      {returning: true, where: {casenumber: casenumber} }
     );
-
     sendResponse(res, true, "Case Updated Successfully!", result);
   } catch (err) {
     sendResponse(res, false, "Case Update Unsuccessful!", err);

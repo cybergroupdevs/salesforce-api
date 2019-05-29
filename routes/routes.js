@@ -23,7 +23,7 @@ const casesApiRoutes = [
   },
   {
     method: 'DELETE',
-    url: '/api/case/:id',
+    url: '/api/case/:casenumber',
     handler: cases.deleteCase
   }
 ];

@@ -51,17 +51,11 @@ const updateCase = async (req, res) => {
 
 const deleteCase = async (req, res) => {
   try {
-    const id = req.params.id;
-
-    const result = await Case.updateOne(
-      { CaseNumber: id },
+    const casenumber = req.params.casenumber;
+    const result = await Case.destroy(
       {
-        $set: {
-          isDeleted: true,
-          deletedAt: new Date().toISOString()
-        }
-      },
-      { new: true }
+        where: { casenumber: casenumber }
+      }
     );
 
     sendResponse(res, true, "Case Deleted Successfully!", result);

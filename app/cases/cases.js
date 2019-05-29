@@ -6,6 +6,7 @@ const createCase = async (req, res) => {
     const result = await Case.create(CaseData);
     sendResponse(res, true, "Case Created Successfully!", result);
   } catch (err) {
+    console.log(err)
     sendResponse(res, false, "Case Create Unsuccessful!", err);
   }
 };
@@ -28,7 +29,7 @@ const getCases = async (req, res) => {
 
     sendResponse(res, true, "Case Fetched Successfully!", Cases);
   } catch (err) {
-      console.log(err)
+    console.log(err)
     sendResponse(res, false, "Case Fetch Unsuccessful!", err);
   }
 };
@@ -60,6 +61,7 @@ const deleteCase = async (req, res) => {
 
     sendResponse(res, true, "Case Deleted Successfully!", result);
   } catch (err) {
+    console.log(err)
     sendResponse(res, false, "Case Delete Unsuccessful!", err);
   }
 };

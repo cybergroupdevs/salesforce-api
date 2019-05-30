@@ -3,7 +3,11 @@ const { Contact } = require("./contact");
 const getContact = async (req, res) => {
   try {
     const sfid = req.params.id;
-    const ContactData = await Contact.findOne({ sfid: sfid });
+    const ContactData = await Contact.findOne({
+      where: {
+        sfid: sfid
+      }
+    });
 
     sendResponse(res, true, "Contact Fetched Successfully!", ContactData);
   } catch (err) {

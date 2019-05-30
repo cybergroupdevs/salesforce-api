@@ -3,7 +3,11 @@ const { Account } = require("./account");
 const getAccount = async (req, res) => {
   try {
     const sfid = req.params.id;
-    const AccountData = await Account.findOne({ sfid: sfid });
+    const AccountData = await Account.findOne({
+      where: {
+        sfid: sfid
+      }
+    });
 
     sendResponse(res, true, "Account Fetched Successfully!", AccountData);
   } catch (err) {

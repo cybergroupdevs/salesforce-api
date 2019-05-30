@@ -1,5 +1,6 @@
-const { getContacts } = require("./contacts");
+const { getContacts, getContact } = require("./contacts");
 
 module.exports = {
-  getContacts
+  getContacts,
+  getContact
 };

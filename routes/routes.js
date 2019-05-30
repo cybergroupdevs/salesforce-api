@@ -33,12 +33,22 @@ const caseApiRoutes = [
 const accountApiRoutes = [
   {
     method: 'GET',
+    url: '/api/account/:id',
+    handler: accounts.getAccount
+  },
+  {
+    method: 'GET',
     url: '/api/accounts',
     handler: accounts.getAccounts
   }
 ];
 
 const contactApiRoutes = [
+  {
+    method: 'GET',
+    url: '/api/contact/:id',
+    handler: contacts.getContact
+  },
   {
     method: 'GET',
     url: '/api/contacts',

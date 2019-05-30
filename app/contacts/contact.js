@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const { sequelize } = require("../../db/db");
 
-const Account = sequelize.define('account', {
+const Contact = sequelize.define('contact', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true
@@ -9,21 +9,21 @@ const Account = sequelize.define('account', {
   name: {
     type: Sequelize.STRING
   },
+  accountid: {
+    type: Sequelize.STRING
+  },
   phone: {
     type: Sequelize.STRING,
   },
-  type: {
-    type: Sequelize.STRING,
-  },
-  industry: {
+  email: {
     type: Sequelize.STRING,
   }
 },
 {
-  tableName: 'account',
+  tableName: 'contact',
   schema: 'salesforce',
   timestamps: false,
 }
 );
 
-exports.Account = Account;
+exports.Contact = Contact;

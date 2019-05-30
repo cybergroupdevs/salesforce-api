@@ -1,5 +1,6 @@
 const cases = require('../app/cases')
 const accounts = require('../app/accounts')
+const contacts = require('../app/contacts')
 
 const caseApiRoutes = [
   {
@@ -37,4 +38,12 @@ const accountApiRoutes = [
   }
 ];
 
-exports.apiRoutes = [caseApiRoutes, accountApiRoutes];
+const contactApiRoutes = [
+  {
+    method: 'GET',
+    url: '/api/contacts',
+    handler: contacts.getContacts
+  }
+];
+
+exports.apiRoutes = [caseApiRoutes, accountApiRoutes, contactApiRoutes];

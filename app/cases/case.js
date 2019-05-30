@@ -6,7 +6,8 @@ const Case = sequelize.define('case', {
     type: Sequelize.STRING
   },
   casenumber: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    primaryKey: true
   },
   status: {
     type: Sequelize.STRING,
@@ -34,7 +35,6 @@ const Case = sequelize.define('case', {
   },
   status: {
     type: Sequelize.STRING,
-    primaryKey: true
   },
   createddate: {
     type: Sequelize.DATE

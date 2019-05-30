@@ -2,8 +2,8 @@ const Sequelize = require("sequelize");
 const { sequelize } = require("../../db/db");
 
 const Contact = sequelize.define('contact', {
-  id: {
-    type: Sequelize.INTEGER,
+  sfid: {
+    type: Sequelize.STRING,
     primaryKey: true
   },
   name: {

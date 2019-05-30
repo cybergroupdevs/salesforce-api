@@ -1,6 +1,7 @@
-const { getAccounts, getAccount } = require("./accounts");
+const { getAccounts, getAccount, getAccountContacts } = require("./accounts");
 
 module.exports = {
   getAccounts,
-  getAccount
+  getAccount,
+  getAccountContacts
 };

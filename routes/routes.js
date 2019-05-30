@@ -40,6 +40,11 @@ const accountApiRoutes = [
     method: 'GET',
     url: '/api/accounts',
     handler: accounts.getAccounts
+  },
+  {
+    method: 'GET',
+    url: '/api/account/:id/contacts',
+    handler: accounts.getAccountContacts
   }
 ];
 

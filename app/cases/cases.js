@@ -13,8 +13,8 @@ const createCase = async (req, res) => {
 
 const getCase = async (req, res) => {
   try {
-    const id = req.params.id;
-    const CaseData = await Case.findOne({ CaseNumber: id });
+    const casenumber = req.params.casenumber;
+    const CaseData = await Case.findOne({ casenumber: casenumber });
 
     sendResponse(res, true, "Case Fetched Successfully!", CaseData);
   } catch (err) {

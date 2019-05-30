@@ -5,6 +5,9 @@ const Case = sequelize.define('case', {
   accountid: {
     type: Sequelize.STRING
   },
+  contactid: {
+    type: Sequelize.STRING
+  },
   casenumber: {
     type: Sequelize.STRING,
     primaryKey: true

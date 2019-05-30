@@ -41,6 +41,15 @@ const Case = sequelize.define('case', {
   },
   createddate: {
     type: Sequelize.DATE
+  },
+  type: {
+    type: Sequelize.STRING
+  },
+  reason: {
+    type: Sequelize.STRING
+  },
+  priority: {
+    type: Sequelize.STRING
   }
 },
 {

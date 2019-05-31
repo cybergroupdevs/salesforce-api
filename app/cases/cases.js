@@ -7,7 +7,7 @@ const createCase = async (req, res) => {
     sendResponse(res, true, "Case Created Successfully!", result);
   } catch (err) {
     console.log(err)
-    sendResponse(res, false, "Case Create Unsuccessful!", err);
+    sendResponse(res, false, "Case Create Unsuccessful!", err, 406);
   }
 };
 
@@ -16,7 +16,7 @@ const getCase = async (req, res) => {
     const id = req.params.id;
     const CaseData = await Case.findOne({
       where: {
-        casenumber: id
+        id: id
       }
     });
 
@@ -41,12 +41,12 @@ const getCases = async (req, res) => {
 const updateCase = async (req, res) => {
 
   try {
-    const casenumber = req.params.casenumber,
+    const id = req.params.id,
     updateCaseData = req.body;
 
     const result = await Case.update(
       updateCaseData,
-      {returning: true, where: {casenumber: casenumber} }
+      {returning: true, where: {id: id} }
     );
     sendResponse(res, true, "Case Updated Successfully!", result[1][0]);
   } catch (err) {
@@ -57,10 +57,10 @@ const updateCase = async (req, res) => {
 
 const deleteCase = async (req, res) => {
   try {
-    const casenumber = req.params.casenumber;
+    const id = req.params.id;
     const result = await Case.destroy(
       {
-        where: { casenumber: casenumber }
+        where: { id: id }
       }
     );
 

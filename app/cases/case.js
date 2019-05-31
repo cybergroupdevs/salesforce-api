@@ -10,7 +10,6 @@ const Case = sequelize.define('case', {
   },
   casenumber: {
     type: Sequelize.STRING,
-    primaryKey: true
   },
   status: {
     type: Sequelize.STRING,
@@ -32,9 +31,6 @@ const Case = sequelize.define('case', {
   },
   subject: {
       type: Sequelize.STRING
-  },
-  id: {
-    type: Sequelize.INTEGER
   },
   status: {
     type: Sequelize.STRING,

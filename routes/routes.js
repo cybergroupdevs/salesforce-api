@@ -20,12 +20,12 @@ const caseApiRoutes = [
   },
   {
     method: 'PUT',
-    url: '/api/case/:casenumber',
+    url: '/api/case/:id',
     handler: cases.updateCase
   },
   {
     method: 'DELETE',
-    url: '/api/case/:casenumber',
+    url: '/api/case/:id',
     handler: cases.deleteCase
   }
 ];
